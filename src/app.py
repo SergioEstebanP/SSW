@@ -139,7 +139,24 @@ def logged_index(user):
     if comprobar_Usuario(user):
         return render_template('principalRegistrado.html', user=user, sensores=sensores)
     else:
-        if current_user.is_authenticated:
+        if current_user.is_authenticated:function validaForm() {
+    var x = document.forms["myForm"]["nick-name"].value;
+    if(x == '') {
+        alert("Name must be filled out");
+        return false;
+    }
+
+    var x = document.forms["myForm"]["contraseña"].value;
+    if(x == '') {
+        alert("Password must be filled out");
+        return false;
+    }
+
+    var x = document.forms["myForm"]["recontraseña"].valaue;
+    if(x == '') {
+        alert("Every field must be filled out");
+    }
+}
             return redirect(url_for('logged_index', user=current_user.nickname, sensores=sensores))
         else:
             return redirect(url_for('index', sensores=sensores))
@@ -194,6 +211,14 @@ def registrar_sensor(user):
         y = request.form['long']
         create_Sensor(user,nombre, desc, tipos_sensor[tipo], visible, float(x), float(y))
         return redirect(url_for('profile', user = current_user.nickname))
+
+@ap.route("/<user>/DESDE_DONDE", ethods=['POST'])
+@login_required
+def add_favorite(user, id):
+    if request.method == 'POST':
+        sensor = get_Sensor_ById(id)
+        #añadir entrada a la tabla de favoritos del usuario que llama a la funcion
+
 
 
 @app.route("/sensor/<id>")
