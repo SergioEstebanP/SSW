@@ -139,7 +139,7 @@ def logged_index(user):
     if comprobar_Usuario(user):
         return render_template('principalRegistrado.html', user=user, sensores=sensores)
     else:
-        if current_user.is_authenticated:function validaForm() {
+        if current_user.is_authenticated:function validateForm() {
     var x = document.forms["myForm"]["nick-name"].value;
     if(x == '') {
         alert("Name must be filled out");
